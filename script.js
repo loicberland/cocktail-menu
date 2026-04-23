@@ -1,8 +1,8 @@
 const cocktails = [
   {
     name: "Jungle Bird revisite",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail%20orange%20drink%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Jungle Bird revisite.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rhum", "4 cl"],
       ["Campari", "2 cl"],
@@ -14,8 +14,8 @@ const cocktails = [
   },
   {
     name: "Berry Rum Punch",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fruity%20cocktails%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Berry Rum Punch.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rhum", "4 cl"],
       ["creme cassis", "2 cl"],
@@ -27,8 +27,8 @@ const cocktails = [
   },
   {
     name: "Cherry Negroni",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Negroni%20(cocktail).jpg?width=900",
-    source: "Wikimedia Commons",
+    image: "images/Cherry Negroni.jpg",
+    source: "Photo locale",
     ingredients: [
       ["gin", "3 cl"],
       ["Campari", "3 cl"],
@@ -39,8 +39,8 @@ const cocktails = [
   },
   {
     name: "Peach Rum Sour",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail%20beverage%20juice%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Peach Rum Sour.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rhum", "4 cl"],
       ["creme peche", "2 cl"],
@@ -51,8 +51,8 @@ const cocktails = [
   },
   {
     name: "Cosmopolitan",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolitan%20cocktail%20drink.jpg?width=900",
-    source: "Wikimedia Commons",
+    image: "images/Cosmopolitan.jpg",
+    source: "Photo locale",
     ingredients: [
       ["vodka", "4 cl"],
       ["Cointreau", "2 cl"],
@@ -63,8 +63,8 @@ const cocktails = [
   },
   {
     name: "Painkiller",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fruity%20cocktails%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Painkiller.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rhum", "4 cl"],
       ["ananas", "4 cl"],
@@ -75,8 +75,8 @@ const cocktails = [
   },
   {
     name: "Tequila Berry",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail%20orange%20drink%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Tequila Berry.jpg",
+    source: "Photo locale",
     ingredients: [
       ["tequila", "4 cl"],
       ["creme fruits", "2 cl"],
@@ -87,8 +87,8 @@ const cocktails = [
   },
   {
     name: "Godfather",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Godfather%20cocktail.jpg?width=900",
-    source: "Wikimedia Commons",
+    image: "images/Godfather.jpg",
+    source: "Photo locale",
     ingredients: [
       ["whisky", "4 cl"],
       ["Disaronno", "2 cl"],
@@ -98,8 +98,8 @@ const cocktails = [
   },
   {
     name: "Daiquiri Ananas",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fruity%20cocktails%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Pineapple Daiquiri twist.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rhum", "4 cl"],
       ["ananas", "4 cl"],
@@ -110,8 +110,8 @@ const cocktails = [
   },
   {
     name: "Purple Margarita",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolitan%20cocktail%20(52272444120).jpg?width=900",
-    source: "Wikimedia Commons",
+    image: "images/Purple Margarita.jpg",
+    source: "Photo locale",
     ingredients: [
       ["tequila", "4 cl"],
       ["Cointreau", "2 cl"],
@@ -122,8 +122,8 @@ const cocktails = [
   },
   {
     name: "Black Forest",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail%20beverage%20juice%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Black Forest.jpg",
+    source: "Photo locale",
     ingredients: [
       ["vodka", "4 cl"],
       ["creme cerise", "2 cl"],
@@ -134,8 +134,8 @@ const cocktails = [
   },
   {
     name: "Coco Berry",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fruity%20cocktails%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Coco Berry.jpg",
+    source: "Photo locale",
     ingredients: [
       ["Malibu", "4 cl"],
       ["creme fruits", "2 cl"],
@@ -146,8 +146,8 @@ const cocktails = [
   },
   {
     name: "Americano",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Negroni.jpg?width=900",
-    source: "Wikimedia Commons",
+    image: "images/Americano.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rosso", "3 cl"],
       ["Campari", "3 cl"],
@@ -157,8 +157,8 @@ const cocktails = [
   },
   {
     name: "Bianco Tropical",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail%20orange%20drink%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Bianco Tropical.jpg",
+    source: "Photo locale",
     ingredients: [
       ["bianco", "5 cl"],
       ["ananas", "8 cl"],
@@ -168,8 +168,8 @@ const cocktails = [
   },
   {
     name: "Rosso Berry",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fruity%20cocktails%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Rosso Berry.jpg",
+    source: "Photo locale",
     ingredients: [
       ["rosso", "5 cl"],
       ["creme fruits", "2 cl"],
@@ -180,8 +180,8 @@ const cocktails = [
   },
   {
     name: "Bianco Peach",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail%20beverage%20juice%20(Unsplash).jpg?width=900",
-    source: "Wikimedia Commons / Unsplash",
+    image: "images/Bianco Peach.jpg",
+    source: "Photo locale",
     ingredients: [
       ["bianco", "5 cl"],
       ["creme peche", "2 cl"],
@@ -263,23 +263,23 @@ function renderCards(drinks) {
               <p class="section-title">${icon("list-plus")} Ingredients</p>
               <ul class="ingredient-list">
                 ${drink.ingredients
-                  .map(([name, amount]) => `<li><strong>${name}</strong><span>${amount}</span></li>`)
-                  .join("")}
+          .map(([name, amount]) => `<li><strong>${name}</strong><span>${amount}</span></li>`)
+          .join("")}
               </ul>
             </section>
             <section>
               <p class="section-title">${icon("sparkles")} Methode</p>
               <div class="method-steps">
                 ${drink.method
-                  .map(
-                    (step) => `
+          .map(
+            (step) => `
                       <div class="method-step">
                         <span class="method-icon">${icon(getIconName(step))}</span>
                         <p>${step}</p>
                       </div>
                     `,
-                  )
-                  .join("")}
+          )
+          .join("")}
               </div>
             </section>
           </div>
