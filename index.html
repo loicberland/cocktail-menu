@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu Cocktails - Cremaillere</title>
+    <link rel="preconnect" href="https://commons.wikimedia.org" />
+    <link rel="preconnect" href="https://upload.wikimedia.org" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Cremaillere</p>
+          <h1>Menu Cocktails</h1>
+          <p class="subtitle">Choisis ton verre, filtre par envie, et garde la recette sous la main.</p>
+        </div>
+        <div class="hero__stats" aria-label="Resume du menu">
+          <span><strong id="drinkCount">0</strong> cocktails</span>
+          <span><strong id="ingredientCount">0</strong> ingredients</span>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Filtres du menu">
+        <div class="mode-switch" role="tablist" aria-label="Type de boisson">
+          <button class="mode-button is-active" type="button" data-mode="cocktails" role="tab" aria-selected="true">
+            Cocktails
+          </button>
+          <button class="mode-button" type="button" data-mode="shooters" role="tab" aria-selected="false">
+            Shooteurs
+          </button>
+        </div>
+
+        <label class="select-wrap">
+          <span>Liste</span>
+          <select id="drinkSelect" aria-label="Selectionner un cocktail"></select>
+        </label>
+
+        <div class="filter-panel">
+          <div class="filter-panel__top">
+            <span>Filtrer par ingredient</span>
+            <button class="ghost-button" type="button" id="clearFilters">Tout afficher</button>
+          </div>
+          <div class="ingredient-grid" id="ingredientFilters" aria-label="Ingredients disponibles"></div>
+        </div>
+      </section>
+
+      <section class="results-bar" aria-live="polite">
+        <span id="resultsCount"></span>
+        <span id="activeFilters"></span>
+      </section>
+
+      <section class="cards" id="cards" aria-label="Liste des cocktails"></section>
+
+      <section class="empty-state" id="emptyState" hidden>
+        <h2>Shooteurs a venir</h2>
+        <p>La section est prete. On ajoutera les recettes quand tu auras la liste.</p>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
