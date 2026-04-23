@@ -26,8 +26,7 @@ body {
     linear-gradient(135deg, #fff8ec 0%, #f6fbff 48%, #fff2f5 100%);
 }
 
-button,
-select {
+button {
   font: inherit;
 }
 
@@ -99,14 +98,13 @@ h1 {
 
 .controls {
   display: grid;
-  grid-template-columns: auto minmax(220px, 320px) 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 16px;
   align-items: start;
   margin: 22px 0 12px;
 }
 
 .mode-switch,
-.select-wrap,
 .filter-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -136,27 +134,11 @@ h1 {
   box-shadow: 0 8px 18px rgba(217, 72, 95, 0.24);
 }
 
-.select-wrap {
-  display: grid;
-  gap: 7px;
-  padding: 10px 12px;
-}
-
-.select-wrap span,
 .filter-panel__top span {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
-}
-
-select {
-  width: 100%;
-  min-height: 40px;
-  border: 0;
-  color: var(--ink);
-  background: transparent;
-  outline: 0;
 }
 
 .filter-panel {
@@ -181,12 +163,30 @@ select {
 }
 
 .ingredient-grid {
+  display: grid;
+  gap: 12px;
+  max-height: 210px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.ingredient-category {
+  display: grid;
+  gap: 7px;
+}
+
+.ingredient-category h3 {
+  margin: 0;
+  color: var(--mint);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ingredient-category__chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  max-height: 116px;
-  overflow: auto;
-  padding-right: 4px;
 }
 
 .ingredient-chip {
@@ -413,6 +413,6 @@ select {
   }
 
   .ingredient-grid {
-    max-height: 154px;
+    max-height: 240px;
   }
 }

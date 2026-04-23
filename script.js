@@ -190,20 +190,142 @@ const cocktails = [
     ],
     method: ["Shaker", "Servir bien frais"],
   },
+  {
+    name: "Blue Caribbean",
+    image: "images/Blue Caribbean.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["rhum", "4 cl"],
+      ["curacao", "2 cl"],
+      ["ananas", "8 cl"],
+      ["citron", "1 cl"],
+    ],
+    method: ["Shaker"],
+  },
+];
+
+const shooters = [
+  {
+    name: "Kamikaze Shot",
+    image: "images/Kamikaze Shot.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["vodka", "2 cl"],
+      ["Cointreau", "1 cl"],
+      ["citron", "1 cl"],
+    ],
+    method: ["Shaker avec glace puis servir"],
+  },
+  {
+    name: "Cherry Boom",
+    image: "images/Cherry Boom.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["vodka", "2 cl"],
+      ["creme cerise", "2 cl"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "Purple Shot",
+    image: "images/Purple Shot.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["vodka", "2 cl"],
+      ["creme mure ou myrtille", "2 cl"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "Peach Party Shot",
+    image: "images/Peach Party Shot.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["vodka", "2 cl"],
+      ["creme peche", "2 cl"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "Herbal Fire",
+    image: "images/Herbal Fire.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["Jagermeister", "2 cl"],
+      ["citron", "1 cl"],
+      ["Tabasco", "1 goutte"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "French Shot",
+    image: "images/French Shot.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["vodka", "2 cl"],
+      ["Chambord", "2 cl"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "Jungle Shot",
+    image: "images/Jungle Shot.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["rhum", "2 cl"],
+      ["Campari", "1 cl"],
+      ["ananas", "1 cl"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "Blue Kamikaze",
+    image: "images/Blue Kamikaze.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["vodka", "2 cl"],
+      ["curacao", "1 cl"],
+      ["citron", "1 cl"],
+    ],
+    method: ["Shaker avec glace puis servir"],
+  },
+  {
+    name: "Blue Fire",
+    image: "images/Blue Fire.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["tequila", "2 cl"],
+      ["curacao", "1 cl"],
+      ["citron", "1 cl"],
+    ],
+    method: ["Melanger"],
+  },
+  {
+    name: "Fire Shot",
+    image: "images/Fire Shot.jpg",
+    source: "Photo locale",
+    ingredients: [
+      ["tequila", "2 cl"],
+      ["citron", "1 cl"],
+      ["Tabasco", "1 goutte"],
+    ],
+    method: ["Melanger"],
+  },
 ];
 
 const state = {
   mode: "cocktails",
-  selectedIngredients: new Set(),
+  selectedIngredients: {
+    cocktails: new Set(),
+    shooters: new Set(),
+  },
 };
 
 const cards = document.querySelector("#cards");
-const drinkSelect = document.querySelector("#drinkSelect");
 const ingredientFilters = document.querySelector("#ingredientFilters");
 const clearFilters = document.querySelector("#clearFilters");
 const resultsCount = document.querySelector("#resultsCount");
 const activeFilters = document.querySelector("#activeFilters");
-const emptyState = document.querySelector("#emptyState");
 const drinkCount = document.querySelector("#drinkCount");
 const ingredientCount = document.querySelector("#ingredientCount");
 
@@ -213,8 +335,57 @@ const normalize = (value) =>
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 
-const ingredients = [...new Set(cocktails.flatMap((drink) => drink.ingredients.map(([name]) => name)))]
-  .sort((a, b) => a.localeCompare(b, "fr"));
+const formatIngredientName = (name) =>
+  name
+    .split(" ")
+    .map((word) => word.charAt(0).toLocaleUpperCase("fr-FR") + word.slice(1))
+    .join(" ");
+
+const ingredientCategories = [
+  {
+    name: "Alcools",
+    ingredients: ["rhum", "gin", "vodka", "tequila", "whisky", "Malibu", "Jagermeister"],
+  },
+  {
+    name: "Jus",
+    ingredients: ["ananas", "orange", "citron", "eau petillante"],
+  },
+  {
+    name: "Liquoreux",
+    ingredients: [
+      "Campari",
+      "Cointreau",
+      "Disaronno",
+      "Angostura",
+      "Chambord",
+      "Tabasco",
+      "curacao",
+      "rosso",
+      "bianco",
+      "creme cassis",
+      "creme cerise",
+      "creme fruit",
+      "creme fruits",
+      "creme mure ou myrtille",
+      "creme peche",
+      "sirop",
+      "sirop sucre",
+    ],
+  },
+];
+
+const drinksByMode = {
+  cocktails,
+  shooters,
+};
+
+const getCurrentDrinks = () => drinksByMode[state.mode];
+
+const getSelectedIngredients = () => state.selectedIngredients[state.mode];
+
+const getIngredientsForMode = () =>
+  [...new Set(getCurrentDrinks().flatMap((drink) => drink.ingredients.map(([name]) => name)))]
+    .sort((a, b) => a.localeCompare(b, "fr"));
 
 function getIconName(step) {
   const normalized = normalize(step);
@@ -231,21 +402,31 @@ function icon(name) {
 }
 
 function renderIngredientFilters() {
-  ingredientFilters.innerHTML = ingredients
-    .map(
-      (ingredient) => `
-        <button class="ingredient-chip" type="button" data-ingredient="${ingredient}">
-          ${ingredient}
-        </button>
-      `,
-    )
-    .join("");
-}
+  const ingredients = getIngredientsForMode();
 
-function renderSelect(drinks) {
-  drinkSelect.innerHTML = drinks.length
-    ? drinks.map((drink) => `<option value="${drink.name}">${drink.name}</option>`).join("")
-    : `<option>Aucun cocktail trouve</option>`;
+  ingredientFilters.innerHTML = ingredientCategories
+    .map((category) => {
+      const categoryIngredients = category.ingredients.filter((ingredient) => ingredients.includes(ingredient));
+      if (!categoryIngredients.length) return "";
+
+      return `
+        <div class="ingredient-category">
+          <h3>${category.name}</h3>
+          <div class="ingredient-category__chips">
+            ${categoryIngredients
+              .map(
+                (ingredient) => `
+                  <button class="ingredient-chip" type="button" data-ingredient="${ingredient}">
+                    ${formatIngredientName(ingredient)}
+                  </button>
+                `,
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+    })
+    .join("");
 }
 
 function renderCards(drinks) {
@@ -263,7 +444,7 @@ function renderCards(drinks) {
               <p class="section-title">${icon("list-plus")} Ingredients</p>
               <ul class="ingredient-list">
                 ${drink.ingredients
-          .map(([name, amount]) => `<li><strong>${name}</strong><span>${amount}</span></li>`)
+          .map(([name, amount]) => `<li><strong>${formatIngredientName(name)}</strong><span>${amount}</span></li>`)
           .join("")}
               </ul>
             </section>
@@ -294,59 +475,51 @@ function renderCards(drinks) {
 }
 
 function getFilteredCocktails() {
-  if (!state.selectedIngredients.size) return cocktails;
-  return cocktails.filter((drink) => {
+  const selectedIngredients = getSelectedIngredients();
+  const drinks = getCurrentDrinks();
+
+  if (!selectedIngredients.size) return drinks;
+  return drinks.filter((drink) => {
     const drinkIngredients = new Set(drink.ingredients.map(([name]) => name));
-    return [...state.selectedIngredients].every((ingredient) => drinkIngredients.has(ingredient));
+    return [...selectedIngredients].every((ingredient) => drinkIngredients.has(ingredient));
   });
 }
 
 function render() {
-  const isCocktailMode = state.mode === "cocktails";
-  cards.hidden = !isCocktailMode;
-  emptyState.hidden = isCocktailMode;
-  document.querySelector(".select-wrap").hidden = !isCocktailMode;
-  document.querySelector(".filter-panel").hidden = !isCocktailMode;
-
-  if (!isCocktailMode) {
-    resultsCount.textContent = "0 shooteur pour le moment";
-    activeFilters.textContent = "";
-    return;
-  }
+  const selectedIngredients = getSelectedIngredients();
+  const typeLabel = state.mode === "cocktails" ? "cocktail" : "shooteur";
 
   const filteredCocktails = getFilteredCocktails();
-  renderSelect(filteredCocktails);
   renderCards(filteredCocktails);
-  resultsCount.textContent = `${filteredCocktails.length} cocktail${filteredCocktails.length > 1 ? "s" : ""} affiche${filteredCocktails.length > 1 ? "s" : ""}`;
-  activeFilters.textContent = state.selectedIngredients.size
-    ? `Filtres: ${[...state.selectedIngredients].join(", ")}`
+  resultsCount.textContent = `${filteredCocktails.length} ${typeLabel}${filteredCocktails.length > 1 ? "s" : ""} affiche${filteredCocktails.length > 1 ? "s" : ""}`;
+  activeFilters.textContent = selectedIngredients.size
+    ? `Filtres: ${[...selectedIngredients].map(formatIngredientName).join(", ")}`
     : "Tous les ingredients";
 
   document.querySelectorAll(".ingredient-chip").forEach((chip) => {
-    chip.classList.toggle("is-active", state.selectedIngredients.has(chip.dataset.ingredient));
+    chip.classList.toggle("is-active", selectedIngredients.has(chip.dataset.ingredient));
   });
+
+  drinkCount.textContent = getCurrentDrinks().length;
+  ingredientCount.textContent = getIngredientsForMode().length;
 }
 
 ingredientFilters.addEventListener("click", (event) => {
   const chip = event.target.closest(".ingredient-chip");
   if (!chip) return;
   const ingredient = chip.dataset.ingredient;
-  if (state.selectedIngredients.has(ingredient)) {
-    state.selectedIngredients.delete(ingredient);
+  const selectedIngredients = getSelectedIngredients();
+  if (selectedIngredients.has(ingredient)) {
+    selectedIngredients.delete(ingredient);
   } else {
-    state.selectedIngredients.add(ingredient);
+    selectedIngredients.add(ingredient);
   }
   render();
 });
 
 clearFilters.addEventListener("click", () => {
-  state.selectedIngredients.clear();
+  getSelectedIngredients().clear();
   render();
-});
-
-drinkSelect.addEventListener("change", () => {
-  const targetId = normalize(drinkSelect.value).replace(/[^a-z0-9]+/g, "-");
-  document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 document.querySelectorAll(".mode-button").forEach((button) => {
@@ -357,11 +530,10 @@ document.querySelectorAll(".mode-button").forEach((button) => {
       item.classList.toggle("is-active", isActive);
       item.setAttribute("aria-selected", String(isActive));
     });
+    renderIngredientFilters();
     render();
   });
 });
 
-drinkCount.textContent = cocktails.length;
-ingredientCount.textContent = ingredients.length;
 renderIngredientFilters();
 render();
