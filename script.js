@@ -203,7 +203,7 @@ const cocktails = [
     method: ["Shaker"],
   },
   {
-    name: "Bianco Peach",
+    name: "Madeleine",
     image: "images/madeleine.webp",
     source: "Photo locale",
     ingredients: [
