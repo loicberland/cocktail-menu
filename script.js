@@ -218,9 +218,9 @@ const cocktails = [
     image: "images/elise.jpeg",
     source: "Photo locale",
     ingredients: [
-      ["Jagger", "? cl"],
-      ["Vodka", "? cl"],
-      ["Crazy", "? cl"],
+      ["Jagger", "+? cl"],
+      ["Vodka", "-? cl"],
+      ["Crazy", "~? cl"],
     ],
     method: ["Shaker"],
   },
