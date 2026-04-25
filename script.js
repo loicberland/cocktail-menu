@@ -215,7 +215,7 @@ const cocktails = [
   },
   {
     name: "Elise",
-    image: "images/elise.jpg",
+    image: "images/elise.jpeg",
     source: "Photo locale",
     ingredients: [
       ["Jagger", "? cl"],
